@@ -28,6 +28,16 @@ assessmentButton.addEventListener(
     const paragraph = document.createElement('p');
     paragraph.setAttribute('class', 'card-text');
     const result = assessment(userName);
+
+    // 追加: 「いいところ」キーワードを抜き出して Bootstrap バッジで表示する
+    const match = result.match(/いいところは(.+?)です/);
+    if (match) {
+      const badge = document.createElement('div');
+      badge.setAttribute('class', 'badge rounded-pill text-bg-primary fs-6 mb-2');
+      badge.innerText = `✨ ${match[1]}`;
+      bodyDivision.appendChild(badge);
+    }
+
     paragraph.innerText = result;
     bodyDivision.appendChild(paragraph);
 
